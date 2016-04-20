@@ -19,6 +19,21 @@ function count(S, m, n) {
     return count(S, m - 1, n) + count(S, m, n - S[m - 1]);
 }
 
+function bottomUpDp(dp, n) {
+    dp[1] = 0;  // trivial case
+
+    for (i = 2; i <= n; i++) {
+        dp[i] = 1 + dp[i - 1];
+
+        if (i % 2 == 0)
+            dp[i] = Math.min(dp[i], 1 + dp[i / 2]);
+
+        if (i % 3 == 0)
+            dp[i] = Math.min(dp[i], 1 + dp[i / 3]);
+    }
+    return dp[n];
+}
+
 function findMinimumWayToGetTotal(coins, noOfCoin, total) {
 
     // table[i] will be storing the minimum number of coins
@@ -51,21 +66,6 @@ function findMinimumWayToGetTotal(coins, noOfCoin, total) {
     return table[total];
 }
 
-function bottomUpDp(dp, n) {
-    dp[1] = 0;  // trivial case
-
-    for (i = 2; i <= n; i++) {
-        dp[i] = 1 + dp[i - 1];
-
-        if (i % 2 == 0)
-            dp[i] = Math.min(dp[i], 1 + dp[i / 2]);
-
-        if (i % 3 == 0)
-            dp[i] = Math.min(dp[i], 1 + dp[i / 3]);
-    }
-    return dp[n];
-}
-
 function findAllPossibleWayToMakeChange(coins, noOfCoin, total) {
     // table[i] will be storing the number of solutions for
     // value i. We need n+1 rows as the table is consturcted
@@ -92,7 +92,6 @@ function findAllPossibleWayToMakeChange(coins, noOfCoin, total) {
 
     return table[total];
 }
-
 
 // Driver program to test above function
 (function () {
