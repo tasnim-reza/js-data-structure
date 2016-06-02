@@ -2,7 +2,7 @@
  * Created by tasnim.reza on 17-Apr-16.
  */
 
-http://code.tutsplus.com/articles/data-structures-with-javascript-tree--cms-23393
+//http://code.tutsplus.com/articles/data-structures-with-javascript-tree--cms-23393
 
     function Tree(data) {
         var node = new Node(data);

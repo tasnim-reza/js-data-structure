@@ -44,7 +44,7 @@ function findShortPath(graph, source) {
 }
 
 (function () {
-  var graph = {
+  var graph1 = {
     'a': ['b', 'c', 'd'],
     'b': ['a', 'c', 'f', 'e'],
     'c': ['a', 'b', 'f'],
@@ -55,8 +55,17 @@ function findShortPath(graph, source) {
     'h': ['g']
   };
 
+  var graph = {
+    'a': ['b'],
+    'b': ['a', 'c', 'e'],
+    'c': ['b', 'e', 'd'],
+    'd': ['c', 'f'],
+    'e': ['b', 'c'],
+    'f': ['d']
+  }
 
   var result = findShortPath(graph, 'a');
+  console.log(result);
   var keys = Object.keys(graph);
 
   function calculateShortPath(currentIdx, shortPath) {
